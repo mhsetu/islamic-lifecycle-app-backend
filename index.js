@@ -4,6 +4,9 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
 
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 app.use(cors());
 app.use(express.json());
@@ -33,9 +36,7 @@ async function run() {
     const subCategoryCollection = client
       .db('Islamic_lifestyle-app')
       .collection('sub_category');
-    const duaCollection = client
-      .db('Islamic_lifestyle-app')
-      .collection('dua');
+    const duaCollection = client.db('Islamic_lifestyle-app').collection('dua');
 
     app.get('/category', async (req, res) => {
       const query = {};
